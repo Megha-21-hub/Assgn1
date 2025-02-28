@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Bio Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      text-align: center;
+      margin: 20px;
+    }
+    .bio-container {
+      border: 2px solid #4caf50;
+      border-radius: 10px;
+      padding: 20px;
+      width: 350px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    img {
+      max-width: 150px;
+      height: auto;
+      border-radius: 50%;
+      margin: 10px auto;
+      display: block;
+    }
+    .label {
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Bio Page</h1>
+  <div class="bio-container">
+    <img id="profile-picture" src="" alt="Profile Picture" style="display: none;">
+    <p><span class="label">Name:</span> <span class="data" id="name">Your Name</span></p>
+    <p><span class="label">Education:</span> <span class="data" id="education">Your Education</span></p>
+    <p><span class="label">Known Programming Languages:</span> <span class="data" id="languages">None</span></p>
+  </div>
+  <button onclick="updateBio()">Update Bio</button>
+
+  <script>
+    function updateBio() {
+      let name = prompt("Enter your name:");
+      while (!name) {
+        alert("Name cannot be empty. Please enter your name.");
+        name = prompt("Enter your name:");
+      }
+
+      let education = prompt("Enter your education:");
+      while (!education) {
+        alert("Education cannot be empty. Please enter your education.");
+        education = prompt("Enter your education:");
+      }
+
+      let languages = prompt("Enter the programming languages you know (comma-separated):");
+      while (!languages) {
+        alert("Programming languages cannot be empty. Please enter at least one language.");
+        languages = prompt("Enter the programming languages you know (comma-separated):");
+      }
+
+      let pictureUrl = prompt("Enter the URL of your profile picture:");
+      while (!pictureUrl) {
+        alert("Picture URL cannot be empty. Please enter a valid URL.");
+        pictureUrl = prompt("Enter the URL of your profile picture:");
+      }
+
+      document.getElementById("name").textContent = name;
+      document.getElementById("education").textContent = education;
+      document.getElementById("languages").textContent = languages;
+      const profilePic = document.getElementById("profile-picture");
+      profilePic.src = pictureUrl;
+      profilePic.style.display = "block";
+
+      alert(`Name: ${name}\nEducation: ${education}\nKnown Programming Languages: ${languages}`);
+      console.log(`Name: ${name}, Education: ${education}, Known Programming Languages: ${languages}, Picture URL: ${pictureUrl}`);
+    }
+  </script>
+</body>
+</html>
